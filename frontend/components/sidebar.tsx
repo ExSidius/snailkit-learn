@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
+import { Sidebar as UISidebar } from "@/components/ui/sidebar"
 
 export function Sidebar() {
   const pathname = usePathname()
@@ -39,7 +40,7 @@ export function Sidebar() {
   ]
 
   return (
-    <div className="hidden md:block w-64 border-r bg-background overflow-y-auto h-[calc(100vh-3.5rem)]">
+    <UISidebar>
       <div className="p-4 space-y-6">
         {routes.map((section) => (
           <div key={section.title} className="space-y-2">
@@ -61,6 +62,6 @@ export function Sidebar() {
           </div>
         ))}
       </div>
-    </div>
+    </UISidebar>
   )
 }

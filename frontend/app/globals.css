@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  pre,
+  code {
+    font-family: var(--font-mono);
+  }
+}
+
+/* Content styling for direct HTML */
+.content h1 {
+  @apply text-3xl font-bold mt-8 mb-4;
+}
+
+.content h2 {
+  @apply text-2xl font-bold mt-6 mb-3;
+}
+
+.content h3 {
+  @apply text-xl font-bold mt-5 mb-2;
+}
+
+.content p {
+  @apply my-4;
+}
+
+.content ul,
+.content ol {
+  @apply my-4 ml-6;
+}
+
+.content ul {
+  @apply list-disc;
+}
+
+.content ol {
+  @apply list-decimal;
+}
+
+.content a {
+  @apply text-primary hover:underline;
+}
+
+.content blockquote {
+  @apply border-l-4 border-primary pl-4 italic my-4;
+}
+
+.content table {
+  @apply w-full border-collapse my-4;
+}
+
+.content th,
+.content td {
+  @apply border border-border p-2;
+}
+
+.content th {
+  @apply bg-muted;
+}
+
+.content pre {
+  @apply p-4 rounded-md bg-muted font-mono text-sm my-4 overflow-x-auto;
+}
+
+.content code:not(pre code) {
+  @apply px-1.5 py-0.5 rounded bg-secondary text-secondary-foreground font-mono text-sm;
+}

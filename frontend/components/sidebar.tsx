@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
-import { Sidebar as UISidebar } from "@/components/ui/sidebar"
+import { Sidebar as UISidebar, SidebarTrigger } from "@/components/ui/sidebar"
 
 export function Sidebar() {
   const pathname = usePathname()
@@ -41,6 +41,13 @@ export function Sidebar() {
 
   return (
     <UISidebar>
+      <div className="flex h-14 items-center border-b px-4">
+        <Link href="/" className="flex items-center space-x-2">
+          <span className="text-xl font-bold">🐌 snailkit-learn</span>
+        </Link>
+        <div className="flex-1" />
+        <SidebarTrigger />
+      </div>
       <div className="p-4 space-y-6">
         {routes.map((section) => (
           <div key={section.title} className="space-y-2">

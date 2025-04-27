@@ -3,7 +3,6 @@ import type { Metadata } from "next"
 import { Inter, JetBrains_Mono } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
-import { Header } from "@/components/header"
 import { Sidebar } from "@/components/sidebar"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
@@ -25,7 +24,6 @@ export default function RootLayout({
       <body className={`${inter.variable} ${jetBrainsMono.variable} font-sans`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="flex min-h-screen flex-col">
-            <Header />
             <div className="flex flex-1">
               <Sidebar />
               <main className="flex-1 p-6 overflow-y-auto">{children}</main>

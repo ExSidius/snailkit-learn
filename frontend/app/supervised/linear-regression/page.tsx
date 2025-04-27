@@ -2,6 +2,14 @@
 
 import { EChart } from "@/components/echart";
 import type { EChartsOption } from "echarts";
+import Latex from "react-latex";
+import "katex/dist/katex.min.css";
+
+// The original generating function is -
+// m = 1.3
+// b = 4
+// e = np.random.normal(0, 5, size=len(x))
+// y = m*x + b + e
 
 export default function Page() {
   const data = [
@@ -70,6 +78,66 @@ export default function Page() {
     ],
   };
 
+  const chart2: EChartsOption = {
+    xAxis: { type: "value" as const },
+    yAxis: { type: "value" as const },
+    series: [
+      {
+        data: data,
+        type: "scatter",
+        symbolSize: 8,
+      },
+      {
+        data: Array.from({ length: 49 }, (_, i) => [
+          i + 1,
+          1.2 * (i + 1) + 3.8,
+        ]),
+        type: "line",
+        symbol: "none",
+      },
+    ],
+  }
+
+  const chart3: EChartsOption = {
+    xAxis: { type: "value" as const },
+    yAxis: { type: "value" as const },
+    series: [
+      {
+        data: data,
+        type: "scatter" as const,
+        symbolSize: 8,
+      },
+      {
+        data: Array.from({ length: 49 }, (_, i) => [
+          i + 1,
+          1.3 * (i + 1) + 4,
+        ]),
+        type: "line" as const,
+        symbol: "none",
+        lineStyle: {
+          color: "#3CB371", // Medium sea green color for the line
+          width: 2
+        }
+      },
+      ...data.map((point) => {
+        const x = point[0];
+        const y = point[1];
+        const lineY = 1.3 * x + 4; // The y value on the line
+        
+        return {
+          data: [[x, y], [x, lineY]],
+          type: "line" as const,
+          lineStyle: {
+            color: "red",
+            width: 1
+          },
+          symbol: "none"
+        };
+      })
+    ] as const,
+  };
+
+
   return (
     <div className="w-full px-8">
       <h1 className="mb-2 text-4xl font-bold">Linear Regression</h1>
@@ -99,25 +167,7 @@ export default function Page() {
       <div className="mt-10 flex justify-center">
         <div className="w-full max-w-[1000px]">
           <EChart
-            option={{
-              xAxis: { type: "value" as const },
-              yAxis: { type: "value" as const },
-              series: [
-                {
-                  data: data,
-                  type: "scatter",
-                  symbolSize: 8,
-                },
-                {
-                  data: Array.from({ length: 49 }, (_, i) => [
-                    i + 1,
-                    1.2 * (i + 1) + 3.8,
-                  ]),
-                  type: "line",
-                  symbol: "none",
-                },
-              ],
-            }}
+            option={chart2}
           />
         </div>
       </div>
@@ -150,6 +200,20 @@ export default function Page() {
         linear function (where linear in this case simply means producing a
         line) and then some random noise was added to each point, then the line
         you fit will be the one that minimizes the average squared error.
+      </p>
+      <div className="mt-10 flex justify-center">
+        <div className="w-full max-w-[1000px]">
+          <EChart option={chart3} />
+        </div>
+      </div>
+      <p className="mt-4">
+        Let's state this a little more formally.
+      </p>
+      <p className="mt-4">
+        Legendre and Gauss decided to minimize the sum of the squared errors.
+      </p>
+      <p className="mt-4">
+        Squared Errors: <Latex>{"$\\sum_{i=1}^{n} (y_i - \\hat{y}_i)^2$"}</Latex> where <Latex>{"$y_i$"}</Latex> is the actual value and <Latex>{"$\\hat{y}_i$"}</Latex> is the predicted value from our line.
       </p>
     </div>
   );

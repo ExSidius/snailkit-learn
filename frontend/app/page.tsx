@@ -5,14 +5,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 export default function HomePage() {
   return (
     <div className="space-y-8">
-      <div className="text-center py-6">
-        <h1 className="text-4xl font-bold mb-4">🐌 snailkit-learn</h1>
-        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+      <div className="py-6 text-center">
+        <h1 className="mb-4 text-4xl font-bold">snailkit-learn</h1>
+        <p className="mx-auto max-w-2xl text-xl text-muted-foreground">
           Machine learning at a snail's pace, because understanding is more important than optimization.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
         <Card>
           <CardHeader>
             <CardTitle>Supervised Learning</CardTitle>

@@ -1,0 +1,1 @@
+- [ ] Add selectors that allow people to adjust the axes on the different charts (within some limits...)
